@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_search"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/fragment_search"
+        android:name="io.hwjang.app.googlebooks.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/search_to_detail"
+            app:destination="@id/navigation_detail" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_detail"
+        android:name="io.hwjang.app.googlebooks.ui.detail.DetailFragment"
+        android:label="DetailFragment">
+        <argument
+            android:name="uri"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="id"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_navigation_detail_to_fragment_search"
+            app:destination="@id/fragment_search"
+            app:popUpTo="@id/fragment_search"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+</navigation>

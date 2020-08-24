@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#000000</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="transparent">#0fff</color>
+
+    <color name="system_ui_scrim_light">#B3FFFFFF</color>
+    <color name="system_ui_scrim_black">#40000000</color>
+
+    <color name="book_title">@color/black</color>
+    <color name="book_author">#000</color>
+    <color name="book_date">#000</color>
+    <color name="book_link">#2196F3</color>
+
+</resources>

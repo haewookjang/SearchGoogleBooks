@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="io.hwjang.app.googlebooks.data.model.Book" />
+
+        <variable
+            name="clickListener"
+            type="io.hwjang.app.googlebooks.ui.search.BookDetailClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/book_item_height"
+        android:layout_marginBottom="20dp"
+        android:background="?android:selectableItemBackground"
+        android:onClick="@{(v)-> clickListener.onBookClick(item,v)}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/book_image"
+            style="@style/Book.Image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:load="@{item.volumeInfo.imageLinks.thumbnail}" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/book_title"
+            style="@style/Book.Title"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="@{item.volumeInfo.title}"
+            android:transitionName="title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/book_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/book_author"
+            style="@style/Book.Author"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            app:authors="@{item.volumeInfo.authors}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/book_image"
+            app:layout_constraintTop_toBottomOf="@id/book_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/book_publisher"
+            style="@style/Book.publisher"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="@{item.volumeInfo.publisher}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/book_image"
+            app:layout_constraintTop_toBottomOf="@id/book_author" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/book_date"
+            style="@style/Book.Date"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{item.volumeInfo.publishedDate}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/book_image"
+            app:layout_constraintTop_toBottomOf="@id/book_publisher" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

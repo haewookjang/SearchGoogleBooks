@@ -1,0 +1,73 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:navigationBarColor">@color/transparent</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="Wanted.Material" parent="@android:style/Widget.Material" />
+
+    <style name="Wanted.Material.AppBarLayout" parent="@style/Widget.Design.AppBarLayout">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="Search" />
+
+    <style name="Search.Results">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Search.Hint">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/search_hint_2</item>
+        <item name="android:drawableStart">@drawable/ic_search</item>
+    </style>
+
+    <style name="Book">
+        <item name="android:textColor">@color/book_title</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">5dp</item>
+    </style>
+
+    <style name="Book.Image">
+        <item name="android:scaleType">fitStart</item>
+        <item name="android:layout_width">@dimen/book_image_width</item>
+        <item name="android:layout_height">@dimen/book_image_height</item>
+    </style>
+
+    <style name="Book.Title">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Book.Author">
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Book.publisher">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Book.Pages">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Book.Description">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Book.Date">
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>
