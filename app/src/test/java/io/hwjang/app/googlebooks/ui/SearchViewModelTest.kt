@@ -3,6 +3,7 @@ package io.hwjang.app.googlebooks.ui
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.test.runBlockingTest
 import io.hwjang.app.googlebooks.MainCoroutineScopeRule
@@ -21,6 +22,7 @@ import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
 import java.net.UnknownHostException
 
+@HiltAndroidTest
 @RunWith(MockitoJUnitRunner::class)
 class SearchViewModelTest {
     @Rule

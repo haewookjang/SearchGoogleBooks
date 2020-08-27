@@ -2,6 +2,8 @@ package io.hwjang.app.googlebooks.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.Assert.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
@@ -18,8 +20,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import org.mockito.Spy
 import org.mockito.internal.verification.Times
@@ -27,6 +28,7 @@ import org.mockito.junit.MockitoJUnitRunner
 import java.lang.RuntimeException
 import java.net.UnknownHostException
 
+@HiltAndroidTest
 @RunWith(MockitoJUnitRunner::class)
 class DetailViewModelTest {
     @Rule
@@ -54,6 +56,7 @@ class DetailViewModelTest {
         override fun search(q: String): BookSearchResult {
             return searchResult
         }
+
         @Throws(Exception::class)
         override suspend fun getBookInfoById(id: String): Book {
             return book
@@ -82,23 +85,7 @@ class DetailViewModelTest {
     @Mock
     lateinit var unknownHostException: UnknownHostException
 
-    @ExperimentalCoroutinesApi
-    @Test
-    fun test_get_book_loading() {
-        val flow = flow<HttpResponse<Book>> {
-            emit(HttpResponse.Loading)
-            emit(HttpResponse.Success(book))
-        }
-        coroutineScope.runBlockingTest {
-            `when`(vm.httpGet {
-                book
-            }).thenReturn(flow)
-            vm.loading.observeForever(loadingObserver)
 
-            vm.load("android")
-            verify(loadingObserver, Times(2)).onChanged(false)
-        }
-    }
 
 
     @Test
@@ -114,8 +101,9 @@ class DetailViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun test_get_book_failure() {
+
         coroutineScope.runBlockingTest {
-            val runtimeException=RuntimeException()
+            val runtimeException = RuntimeException()
             `when`(vm.repository.getBookInfoById("android")).thenThrow(runtimeException)
             vm.load("android")
             vm.error.observeForever(errorObserver)
